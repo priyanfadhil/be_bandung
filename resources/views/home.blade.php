@@ -34,6 +34,24 @@
     </div>
 </section>
 
+    <section class="landing city">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Kota Bandung <br>Jawa Barat</h2>
+                    <p style="margin-top: -25px">
+                        Sensasi panorama alam yang eksotik, hawa yang sejuk dan suasana kota kembang yang khas
+                        merupakan salah satu ciri khas yang unik <br>dari <b>Kota Bandung, Jawa Barat.</b>
+                        Menikmati indahnya alam serta nikmatnya kuliner di Bandung merupakan pengalaman yang tak terlupakan.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="mapDesa" id="mapDesa"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <section class="landing features">
     <div class="container features-content">
         <div class="row ">
@@ -189,13 +207,13 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbwv-bQnK_aRuSAm7tjKb2CMpl28S0Ppo&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5zc7V4uJ25QXuT7FZRmcFkHs9s2iB1u0&v=beta&callback=initMap" async defer></script>
 <script>
     function initMap() {
         const map = new google.maps.Map(document.getElementById("mapDesa"), {
             center: {
-                lat: -6.586254,
-                lng: 107.3287043
+                lat: -6.914744,
+                lng: 107.609810
             },
             zoom: 16
         });
@@ -206,7 +224,7 @@
     }
 
     function geoLocation(geocoder, mapResults) {
-        const address = "Pasanggrahan, Tegal Waru, Kabupaten Purwakarta, Jawa Barat 41165"
+        const address = "Kota Bandung, Jawa Barat"
         geocoder.geocode({
             address: address
         }, function(res, status) {
