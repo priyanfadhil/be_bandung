@@ -15,15 +15,17 @@ class HomeController extends Controller
     public function index()
     {
         $wisata = Wisata::query()->orderBy('name', 'asc')->limit(5)->get();
-        return view('home', compact('wisata'));
+        $title = "Dashboard";
+        return view('home', compact('wisata', 'title'));
     }
 
-    public function wisata_detail($id)
+    public function show($id)
     {
         $data = Wisata::find($id);
+        $title = "Detail Wisata";
         if($data){
             $gallery = GalleryWisata::where('id_wisata', $id)->get();
-            return view('wisata_detail', compact('data', 'gallery'));
+            return view('wisata_detail', compact('data', 'gallery', 'title'));
         }else{
             return abort('404');
         }
