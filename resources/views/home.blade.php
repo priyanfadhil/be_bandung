@@ -132,11 +132,17 @@
         <div style="text-align: center;">
             <h2 style="margin-top:10px">Wisata Bandung</h2>
         </div>
+        <!-- <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white" style="background-color:#f8ba10; border: none; color: white;">Tambah Wisata</a> -->
+        
+    
     </div>
-    <div class="owl-carousel owl-theme">
+
+    
+
+    <!-- <div class="owl-carousel owl-theme">
         @foreach($wisata as $data)
         <div class="item">
-            <a href="/wisata/{{ $data->id }}">
+            <a href="/wisata/{{ $data->id }}" style="text-decoration: none;">
                 <div class="item-image">
                     <img class="item-image " src="{{asset('assets/images/wisata')}}/{{ $data->background }}" width="auto" alt="">
                 </div>
@@ -147,10 +153,41 @@
             </a>
         </div>
         @endforeach
+    </div> -->
+
+    <div class="owl-carousel owl-theme">
+        @foreach($wisata as $data)
+        <div class="item">
+            <div class="item-image">
+                <img class="item-image " src="{{asset('assets/images/wisata')}}/{{ $data->background }}" width="auto" alt="">
+            </div>
+            <div class="item-text d-inline">
+                <span class="item-kicker">{{ $data->name }}</span>
+                <h3 class="item-title">{{ $data->address }}</h3>
+                <button type="button" class="btn btn-primary"><a href="/wisata/{{ $data->id }}/edit" style="text-decoration: none; color: black">Update</a></button>
+                <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+                
+                <form action="/wisata/{{ $data->id }}" method="post" class="d-inline" onsubmit="return confirm('ingin menghapus data ?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                </form>
+            </div>
+        </div>
+        @endforeach
     </div>
+
+    <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
+            <!-- Left Column -->
+            <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
+                <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Wisata</a>       
+            </div>
+    </div>
+
     <div class="features-slanted"></div>
     <br><br>
 </section>
+
 <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
     <div>
         <div class="mx-auto d-flex flex-lg-row flex-column hero">
@@ -185,7 +222,7 @@
 </div>
 <section class="landing news">
     <div class="container">
-        <h2>Berita Wisata Desa</h2>
+        <h2>Berita Bandung</h2>
         <div class="row" id="newsContainer"></div>
     </div>
 </section>
@@ -194,7 +231,7 @@
 <section style="margin-top:0!important" class="footer">
     <div class="container">
         <div style="text-align: center;">
-            <img src="{{url('assets/images/logo/KetapangLogo-White.png')}}" width="150px" alt="Logo">
+            <img src="{{url('assets/images/logo/KetapangLogoOnly-White.png')}}" width="50px" alt="Logo">
             <font color="#f5f5f5" class="font-segoe text-center nopadding">&#8212; &nbsp; Copyright&copy;2022 - be Bandung - Jawa Barat</font>
         </div>
     </div>

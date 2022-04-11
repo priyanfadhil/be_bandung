@@ -27,6 +27,11 @@ select:focus {
     margin-bottom: -1px;
 }
 
+.form-create input{
+    border-radius: 0;
+    margin-bottom: 10px;
+}
+
 #mapDesa {
     height: 100%;
 }

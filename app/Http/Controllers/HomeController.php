@@ -18,16 +18,4 @@ class HomeController extends Controller
         $title = "Dashboard";
         return view('home', compact('wisata', 'title'));
     }
-
-    public function show($id)
-    {
-        $data = Wisata::find($id);
-        $title = "Detail Wisata";
-        if($data){
-            $gallery = GalleryWisata::where('id_wisata', $id)->get();
-            return view('wisata_detail', compact('data', 'gallery', 'title'));
-        }else{
-            return abort('404');
-        }
-    }
 }
