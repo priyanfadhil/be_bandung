@@ -2,7 +2,7 @@
 
 @section('konten')
 <div class="row justify-content-center">
-    <div class="col-lg-4">
+    <div class="col-lg">
         @if(session()->has('success'))
             <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert" id="myAlert">
                 {{ session('success') }}

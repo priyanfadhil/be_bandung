@@ -77,8 +77,8 @@
     <section style="margin-top:0!important" class="footer">
         <div class="container">
           <div style="text-align: center;">
-            <img src="{{url('assets/images/logo/KetapangLogo-White.png')}}" width="150px" alt="Logo">
-             <span class="font-segoe text-center nopadding" style="color: #f5f5f5; ">&#8212; &nbsp; Copyright &copy; 2020 - Ketapas - Telkom University</span>
+            <img src="{{url('assets/images/logo/KetapangLogoOnly-White.png')}}" width="150px" alt="Logo">
+             <span class="font-segoe text-center nopadding" style="color: #f5f5f5; ">&#8212; &nbsp; Copyright &copy; 2022 - be Bandung - Telkom University</span>
           </div>
         </div>
     </section>
