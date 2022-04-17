@@ -87,7 +87,7 @@
     <script src="{{url('assets/scripts/jquery.min.js')}}"></script>
     <script src="{{url('assets/scripts/bootstrap/bootstrap.min.js')}}"></script>
      <script src="{{url('assets/scripts/owl.carousel.min.js')}}"></script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbwv-bQnK_aRuSAm7tjKb2CMpl28S0Ppo&callback=initMap"
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5zc7V4uJ25QXuT7FZRmcFkHs9s2iB1u0&v=beta&callback=initMap"
                   async defer></script>
     <script>
     $('.owl-carousel').owlCarousel({
