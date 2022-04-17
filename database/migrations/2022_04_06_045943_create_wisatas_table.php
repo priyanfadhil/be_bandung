@@ -20,7 +20,7 @@ class CreateWisatasTable extends Migration
             $table->string('address');
             $table->string('time');
             $table->string('phone');
-            $table->string('background');
+            $table->string('background')->nullable();
             $table->string('facility');
             $table->timestamps();
         });

@@ -37,15 +37,20 @@ class WisataController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate ([
             'name' => 'required|max:255',
             'description' => 'required|max:255',
             'address' => 'required|max:255',
             'time' => 'required|max:255',
             'phone' => 'required|numeric|min:10',
-            'background' => 'required|max:255',
+            'background' => 'image|file|max:1024',
             'facility' => 'required|max:255'
         ]);
+
+        if($request->file('background')){
+            $validatedData['background'] = $request->file('background')->store('wisata-backgrounds');
+        }
         
         Wisata::create($validatedData);
 
@@ -102,7 +107,7 @@ class WisataController extends Controller
         $wisata -> address = $request->address;
         $wisata -> time = $request->time;
         $wisata -> phone = $request->phone;
-        $wisata -> background = $request->background;
+        $wisata -> background = $request->file('background')->store('wisata-backgrounds');
         $wisata -> facility = $request->facility;
         $wisata->save();
         return redirect('/')->with('success', 'Berhasil Update Wisata!');

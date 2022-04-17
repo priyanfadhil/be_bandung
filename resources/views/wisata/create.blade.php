@@ -2,7 +2,7 @@
 
 @section('konten')
 <div class="row justify-content-center">
-    <div class="col-lg">
+    <div class="col-lg-4">
         @if(session()->has('success'))
             <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert" id="myAlert">
                 {{ session('success') }}
@@ -11,7 +11,7 @@
         @endif
         <main class="form-create">
             <h1 class="h3 mt-5 fw-normal text-center">Tambah Wisata</h1>
-            <form action="/wisata" method="post">
+            <form action="/wisata" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating">
                     <input type="text" name="name" class="form-control rounded-top @error('name')is-invalid @enderror" id="name" placeholder="Name" required value="{{ old('name') }}">
@@ -63,7 +63,7 @@
                     @enderror
                 </div>
 
-                <div class="form-floating">
+                <!-- <div class="form-floating">
                     <input type="text" name="background" class="form-control @error('background')is-invalid @enderror" id="background" placeholder="Background" required value="{{ old('background') }}">
                     <label for="background" style="color:black">Gambar</label>
                     @error('background')
@@ -71,7 +71,35 @@
                             {{ $message }}
                         </div>
                     @enderror
+                </div> -->
+
+                <div class="mb-3">
+                    <input type="file" name="background" class="form-control @error('background')is-invalid @enderror" id="background" placeholder="Background" required value="{{ old('background') }}">
+                    <!-- <label for="background" class="form-label">Default file input example</label> -->
+                    @error('background')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
+
+                <!-- <div class="custom-file mb-2">
+                    <input type="file" name="background" lang="in" class="custom-file-input @error('background')is-invalid @enderror" id="background" placeholder="Background" required value="{{ old('background') }}">
+                    <label for="background" class="custom-file-label" style="color:black">Gambar</label>
+                    
+                    @error('background')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div> -->
+
+                <!-- <div class="custom-file mb-4">
+                    <label class="btn btn-primary">
+                        <i class="fa fa-image"></i> Gambar Wisata
+                        <input type="file" style="display: none;" name="image">
+                    </label>
+                </div> -->
 
                 <div class="form-floating">
                     <input type="text" name="facility" class="form-control @error('facility')is-invalid @enderror" id="facility" placeholder="Facility" required value="{{ old('facility') }}">

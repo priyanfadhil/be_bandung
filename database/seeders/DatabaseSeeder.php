@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Jl. Banten No.7, Kebonwaru, Kec. Batununggal, Kota Bandung, Jawa Barat 40272',
             'time' => '09.00 - 20.00',
             'phone' => '081214538745',
-            'background' => '1000',
+            'background' => '',
             'facility' => 'Spot foto gratis'
         ]);
 
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Gunung Burangrang, Desa Cipada, Cikalongwetan, Bandung Barat',
             'time' => '09.00 - 17.00',
             'phone' => '081514159482',
-            'background' => "{{url('assets/images/highlight/wisata.png')}}",
+            'background' => "",
             'facility' => 'Free Parking'
         ]);
 
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Rancanumpang, Kec. Gedebage, Kota Bandung, Jawa Barat',
             'time' => '19.00 - 20.00',
             'phone' => '081314156894',
-            'background' => "{{url('assets/images/highlight/wisata.png')}}",
+            'background' => "",
             'facility' => 'taman bermain anak-anak'
         ]);
 
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Jl. Raya Ciwidey - Patengan No.KM. 11, Patengan, Kec. Rancabali, Kabupaten Bandung',
             'time' => '07.00 - 17.00',
             'phone' => '08112007768',
-            'background' => "{{url('assets/images/highlight/wisata.png')}}",
+            'background' => "",
             'facility' => 'Outbond, Camping Ground'
         ]);
     }

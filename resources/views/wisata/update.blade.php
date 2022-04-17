@@ -11,7 +11,7 @@
         @endif
         <main class="form-create">
             <h1 class="h3 mt-5 fw-normal text-center">Tambah Wisata</h1>
-            <form action="/{{ $action }}" method="post">
+            <form action="/{{ $action }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="_method" value="{{ $method }}" />
                 <div class="form-floating">
@@ -64,9 +64,9 @@
                     @enderror
                 </div>
 
-                <div class="form-floating">
-                    <input type="text" name="background" class="form-control @error('background')is-invalid @enderror" id="background" placeholder="Background" required value="{{ isset($wisata)?$wisata->background:'' }}">
-                    <label for="background" style="color:black">Gambar</label>
+                <div class="mb-3">
+                    <input type="file" name="background" class="form-control @error('background')is-invalid @enderror" id="background" placeholder="Background" required value="{{ old('background') }}">
+                    <!-- <label for="background" class="form-label">Default file input example</label> -->
                     @error('background')
                         <div class="invalid-feedback">
                             {{ $message }}

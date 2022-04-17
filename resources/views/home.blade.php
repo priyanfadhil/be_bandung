@@ -159,7 +159,11 @@
         @foreach($wisata as $data)
         <div class="item">
             <div class="item-image">
-                <img class="item-image " src="{{asset('assets/images/wisata')}}/{{ $data->background }}" width="auto" alt="">
+                @if($data->background)
+                <img class="item-image " src="{{ asset('storage/' . $data->background) }}" width="auto" alt="">
+                @else
+                <img class="item-image " src="https://source.unsplash.com/300x300" width="auto" alt="">
+                @endif
             </div>
             <div class="item-text d-inline">
                 <span class="item-kicker">{{ $data->name }}</span>
