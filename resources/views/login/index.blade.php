@@ -1,8 +1,5 @@
-@extends('template.navigation')
-
-
-
-@section('konten')
+@extends('template.application')
+@section('body')
 
 <div class="row justify-content-center">
     <div class="col-lg-3">

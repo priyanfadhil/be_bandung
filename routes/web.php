@@ -17,7 +17,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-Route::get('/',  [HomeController::class, 'index'])->middleware('auth');
+Route::get('/',  [HomeController::class, 'index']);
 //Route::get('/wisata/{id}',  [HomeController::class, 'show'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
