@@ -228,7 +228,7 @@
     <br><br>
 </section>
 
-<section class="landing news">
+<section class="landing news" id="berita">
     <div class="container">
         <h2>Berita Bandung</h2>
         <div class="row" id="newsContainer"></div>

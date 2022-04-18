@@ -28,10 +28,10 @@
                     <a class="nav-link" href="#wisata">Wisata</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#paket">Kuliner</a>
+                    <a class="nav-link" href="#kuliner">Kuliner</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#paket">Profil Wilayah</a>
+                    <a class="nav-link" href="#berita">Berita Terkini</a>
                 </li>
 
                 <li class="nav-item dropdown">
