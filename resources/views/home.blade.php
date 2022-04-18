@@ -1,4 +1,3 @@
-
 @extends('template.navigation')
 
 @section('konten')
@@ -35,23 +34,23 @@
     </div>
 </section>
 
-    <section class="landing city">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Kota Bandung <br>Jawa Barat</h2>
-                    <p style="margin-top: -25px">
-                        Sensasi panorama alam yang eksotik, hawa yang sejuk dan suasana kota kembang yang khas
-                        merupakan salah satu ciri khas yang unik <br>dari <b>Kota Bandung, Jawa Barat.</b>
-                        Menikmati indahnya alam serta nikmatnya kuliner di Bandung merupakan pengalaman yang tak terlupakan.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="mapDesa" id="mapDesa"></div>
-                </div>
+<section class="landing city">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Kota Bandung <br>Jawa Barat</h2>
+                <p style="margin-top: -25px">
+                    Sensasi panorama alam yang eksotik, hawa yang sejuk dan suasana kota kembang yang khas
+                    merupakan salah satu ciri khas yang unik <br>dari <b>Kota Bandung, Jawa Barat.</b>
+                    Menikmati indahnya alam serta nikmatnya kuliner di Bandung merupakan pengalaman yang tak terlupakan.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="mapDesa" id="mapDesa"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <section class="landing features">
     <div class="container features-content">
@@ -134,11 +133,11 @@
             <h2 style="margin-top:10px">Wisata Bandung</h2>
         </div>
         <!-- <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white" style="background-color:#f8ba10; border: none; color: white;">Tambah Wisata</a> -->
-        
-    
+
+
     </div>
 
-    
+
 
     <!-- <div class="owl-carousel owl-theme">
         @foreach($wisata as $data)
@@ -169,28 +168,32 @@
             <div class="item-text d-inline">
                 <span class="item-kicker">{{ $data->name }}</span>
                 <h3 class="item-title">{{ $data->address }}</h3>
+                @if(auth()->user()->is_admin)
                 <button type="button" class="btn btn-primary"><a href="/wisata/{{ $data->id }}/edit" style="text-decoration: none; color: black">Update</a></button>
-                <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
-                
                 <form action="/wisata/{{ $data->id }}" method="post" class="d-inline" onsubmit="return confirm('ingin menghapus data ?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </form>
+                <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+                @else
+                    <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+                @endif
             </div>
         </div>
         @endforeach
     </div>
-
+    @if(auth()->user()->is_admin)
     <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
-            <!-- Left Column -->
-            <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
-                <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Wisata</a>       
-            </div>
+        <!-- Left Column -->
+        <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
+            <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Wisata</a>
+        </div>
     </div>
 
     <div class="features-slanted"></div>
     <br><br>
+    @endif
 </section>
 
 <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
@@ -200,9 +203,9 @@
             <div class="left-column d-flex flex-lg-grow-1 flex-column align-items-lg-start text-lg-start align-items-center text-center">
                 <h1 class="title-text-big">
                     Cita Rasa<br class="d-lg-block d-none" />
-                    <div class ="font">be Bandung</div>
+                    <div class="font">be Bandung</div>
                 </h1>
-                <p> Menyajikan rekomendasi berbagai macam kuliner khas Bandung yang 
+                <p> Menyajikan rekomendasi berbagai macam kuliner khas Bandung yang
                     dapat memanjakan lidah wisatawan <strong>Bandung</strong> </p>
                 <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
                     <button class="btn d-inline-flex mb-md-0 btn-try text-white">
