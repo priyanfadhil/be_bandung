@@ -1,5 +1,4 @@
 @extends('template.navigation')
-
 @section('konten')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <!-- Hero Landing-->
@@ -34,23 +33,23 @@
     </div>
 </section>
 
-    <section class="landing city">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Kota Bandung <br>Jawa Barat</h2>
-                    <p style="margin-top: -25px">
-                        Sensasi panorama alam yang eksotik, hawa yang sejuk dan suasana kota kembang yang khas
-                        merupakan salah satu ciri khas yang unik <br>dari <b>Kota Bandung, Jawa Barat.</b>
-                        Menikmati indahnya alam serta nikmatnya kuliner di Bandung merupakan pengalaman yang tak terlupakan.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <div class="mapDesa" id="mapDesa"></div>
-                </div>
+<section class="landing city">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Kota Bandung <br>Jawa Barat</h2>
+                <p style="margin-top: -25px">
+                    Sensasi panorama alam yang eksotik, hawa yang sejuk dan suasana kota kembang yang khas
+                    merupakan salah satu ciri khas yang unik <br>dari <b>Kota Bandung, Jawa Barat.</b>
+                    Menikmati indahnya alam serta nikmatnya kuliner di Bandung merupakan pengalaman yang tak terlupakan.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="mapDesa" id="mapDesa"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <section class="landing features">
     <div class="container features-content">
@@ -132,98 +131,103 @@
         <div style="text-align: center;">
             <h2 style="margin-top:10px">Wisata Bandung</h2>
         </div>
-        <!-- <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white" style="background-color:#f8ba10; border: none; color: white;">Tambah Wisata</a> -->
-        
-    
     </div>
-
-    
-
-    <!-- <div class="owl-carousel owl-theme">
-        @foreach($wisata as $data)
-        <div class="item">
-            <a href="/wisata/{{ $data->id }}" style="text-decoration: none;">
-                <div class="item-image">
-                    <img class="item-image " src="{{asset('assets/images/wisata')}}/{{ $data->background }}" width="auto" alt="">
-                </div>
-                <div class="item-text">
-                    <span class="item-kicker">{{ $data->name }}</span>
-                    <h3 class="item-title">{{ $data->address }}</h3>
-                </div>
-            </a>
-        </div>
-        @endforeach
-    </div> -->
 
     <div class="owl-carousel owl-theme">
         @foreach($wisata as $data)
         <div class="item">
             <div class="item-image">
                 @if($data->background)
-                <img class="item-image " src="{{ asset('storage/' . $data->background) }}" width="auto" alt="">
+                <img class="item-image " src="<?php echo str_replace("public/","",asset('storage/'.$data->background)); ?>" width="auto" alt="">
                 @else
                 <img class="item-image " src="https://source.unsplash.com/300x300" width="auto" alt="">
                 @endif
             </div>
-            <div class="item-text d-inline">
-                <span class="item-kicker">{{ $data->name }}</span>
-                <h3 class="item-title">{{ $data->address }}</h3>
-                <button type="button" class="btn btn-primary"><a href="/wisata/{{ $data->id }}/edit" style="text-decoration: none; color: black">Update</a></button>
-                <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
-                
-                <form action="/wisata/{{ $data->id }}" method="post" class="d-inline" onsubmit="return confirm('ingin menghapus data ?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Hapus</button>
-                </form>
-            </div>
+            <span class="item-kicker">{{ $data->name }}</span>
+            <h3 class="item-title mb-3">{{ $data->address }}</h3>
+            @auth
+            @if(auth()->user()->is_admin)
+            <button type="button" class="btn btn-primary"><a href="/wisata/{{ $data->id }}/edit" style="text-decoration: none; color: white">Update</a></button>
+            <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+
+            <form action="/wisata/{{ $data->id }}" method="post" class="d-inline" onsubmit="return confirm('ingin menghapus data ?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+            @endif
+            @else
+            <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+            @endauth
         </div>
         @endforeach
     </div>
-
+    @auth
+    @if(auth()->user()->is_admin)
     <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
-            <!-- Left Column -->
-            <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
-                <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Wisata</a>       
-            </div>
+        <!-- Left Column -->
+        </br>
+        <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
+            <a href="/wisata/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Wisata</a>
+        </div>
     </div>
-
+    @endif
+    @endauth
     <div class="features-slanted"></div>
     <br><br>
 </section>
 
-<div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
-    <div>
-        <div class="mx-auto d-flex flex-lg-row flex-column hero">
-            <!-- Left Column -->
-            <div class="left-column d-flex flex-lg-grow-1 flex-column align-items-lg-start text-lg-start align-items-center text-center">
-                <h1 class="title-text-big">
-                    Cita Rasa<br class="d-lg-block d-none" />
-                    <div class ="font">be Bandung</div>
-                </h1>
-                <p> Menyajikan rekomendasi berbagai macam kuliner khas Bandung yang 
-                    dapat memanjakan lidah wisatawan <strong>Bandung</strong> </p>
-                <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
-                    <button class="btn d-inline-flex mb-md-0 btn-try text-white">
-                        Lihat Kuliner
-                    </button>
-                    <button class="btn btn-outline">
-                        <div class="d-flex align-items-center">
-                            <svg class="me-2" width="13" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.9293 7.99988L6.66668 5.15788V10.8419L10.9293 7.99988ZM12.9173 8.27722L5.85134 12.9879C5.80115 13.0213 5.74283 13.0404 5.6826 13.0433C5.62238 13.0462 5.5625 13.0327 5.50934 13.0042C5.45619 12.9758 5.41175 12.9334 5.38075 12.8817C5.34976 12.83 5.33337 12.7708 5.33334 12.7105V3.28922C5.33337 3.22892 5.34976 3.16976 5.38075 3.11804C5.41175 3.06633 5.45619 3.02398 5.50934 2.99552C5.5625 2.96706 5.62238 2.95355 5.6826 2.95644C5.74283 2.95932 5.80115 2.97848 5.85134 3.01188L12.9173 7.72255C12.963 7.75299 13.0004 7.79423 13.0263 7.84261C13.0522 7.89099 13.0658 7.94501 13.0658 7.99988C13.0658 8.05475 13.0522 8.10878 13.0263 8.15716C13.0004 8.20553 12.963 8.24678 12.9173 8.27722Z" fill="#555B61" />
-                            </svg>
-                            Lihat Lokasi
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <!-- Right Column -->
-            <div class="right-column text-center d-flex justify-content-lg-end justify-content-center pe-0">
-                <img id="img-fluid" class="h-auto mw-100" src="{{ asset('assets/images/galeri/kuliner.svg') }}" alt="" />
-            </div>
+<section class="landing wisata" id="kuliner">
+    <div style="padding-top: 60px" class="container">
+        <div style="text-align: center;">
+            <h2 style="margin-top:10px">Kuliner Bandung</h2>
         </div>
     </div>
-</div>
+
+    <div class="owl-carousel owl-theme">
+        @foreach($kuliner as $data)
+        <div class="item">
+            <div class="item-image">
+                @if($data->background)
+                <img class="item-image " src="<?php echo str_replace("public/","",asset('storage/'.$data->background)); ?>" width="auto" alt="">
+                @else
+                <img class="item-image " src="https://source.unsplash.com/300x300" width="auto" alt="">
+                @endif
+            </div>
+            <span class="item-kicker">{{ $data->name }}</span>
+            <h3 class="item-title mb-3">{{ $data->address }}</h3>
+            @auth
+            @if(auth()->user()->is_admin)
+            <button type="button" class="btn btn-primary"><a href="/kuliner/{{ $data->id }}/edit" style="text-decoration: none; color: white">Update</a></button>
+            <button type="button" class="btn btn-light"><a href="/kuliner/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+
+            <form action="/kuliner/{{ $data->id }}" method="post" class="d-inline" onsubmit="return confirm('ingin menghapus data ?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Hapus</button>
+            </form>
+            @endif
+            @else
+            <button type="button" class="btn btn-light"><a href="/wisata/{{ $data->id }}" style="text-decoration: none; color: black">Detail</a></button>
+            @endauth
+        </div>
+        @endforeach
+    </div>
+    @auth
+    @if(auth()->user()->is_admin)
+    <div class="header-4-1 container-xxl mx-auto p-0 position-relative" style="font-family: 'Poppins', sans-serif">
+        <!-- Left Column -->
+        </br>
+        <div class="d-flex flex-sm-row flex-column align-items-center mx-lg-0 mx-auto justify-content-center gap-3">
+            <a href="/kuliner/create" class="btn d-inline-flex mb-md-0 btn-try text-white">Tambah Kuliner</a>
+        </div>
+    </div>
+    @endif
+    @endauth
+    <div class="features-slanted"></div>
+    <br><br>
+</section>
+
 <section class="landing news">
     <div class="container">
         <h2>Berita Bandung</h2>
@@ -299,7 +303,7 @@
     // Owl Carousel
     $('.owl-carousel').owlCarousel({
         loop: false,
-        margin: 10,
+        margin: 20,
         dots: false,
         nav: false,
         autoplay: false,

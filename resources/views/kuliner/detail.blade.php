@@ -65,15 +65,6 @@
     <h3 class="title-content text-center">Gallery</h3>
   </div>
   <div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="owl-carousel owl-theme anu">
-      @foreach($gallery as $g)
-      <div class="item" style="background: none">
-        <div class="item-image">
-          <img class="item-image " src="{{asset('assets/images/galeri_wisata')}}/{{ $g->image }}" width="auto" alt="">
-        </div>
-      </div>
-      @endforeach
-    </div>
     <div>
     </div>
 

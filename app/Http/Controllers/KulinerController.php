@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Wisata;
-use App\Models\GalleryWisata;
+use App\Models\GalleryKuliner;
+use App\Models\Kuliner;
 use Illuminate\Http\Request;
 
-class WisataController extends Controller
+class KulinerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,8 +25,8 @@ class WisataController extends Controller
      */
     public function create()
     {
-        $title = "Create Wisata";
-        return view('wisata.create', compact('title'));
+        $title = "Create Kuliner";
+        return view('kuliner.create', compact('title'));
     }
 
     /**
@@ -52,24 +52,24 @@ class WisataController extends Controller
             $validatedData['background'] = $request->file('background')->store('public');
         }
         
-        Wisata::create($validatedData);
+        Kuliner::create($validatedData);
 
-        return redirect('/')->with('success', 'Berhasil Menambahkan Wisata!');
+        return redirect('/')->with('success', 'Berhasil Menambahkan Kuliner!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Wisata  $wisata
+     * @param  \App\Models\kuliner  $kuliner
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data = Wisata::find($id);
-        $title = "Detail Wisata";
+        $data = Kuliner::find($id);
+        $title = "Detail kuliner";
         if($data){
-            $gallery = GalleryWisata::where('id_wisata', $id)->get();
-            return view('wisata.detail', compact('data', 'gallery', 'title'));
+            // $gallery = GalleryKuliner::where('id_kuliner', $id)->get();
+            return view('kuliner.detail', compact('data', 'title'));
         }else{
             return abort('404');
         }
@@ -78,17 +78,17 @@ class WisataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Wisata  $wisata
+     * @param  \App\Models\kuliner  $kuliner
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $wisata = Wisata::find($id);
-        return view('wisata.update', [
+        $kuliner = Kuliner::find($id);
+        return view('kuliner.update', [
             'title' => 'Edit Obat',
             'method' => 'PUT',
-            'action' => "wisata/$id",
-            'wisata' => $wisata,
+            'action' => "kuliner/$id",
+            'kuliner' => $kuliner,
         ]);
     }
 
@@ -96,33 +96,33 @@ class WisataController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Wisata  $wisata
+     * @param  \App\Models\kuliner  $kuliner
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $wisata = Wisata::find($id);
-        $wisata -> name = $request->name;
-        $wisata -> description = $request->description;
-        $wisata -> address = $request->address;
-        $wisata -> time = $request->time;
-        $wisata -> phone = $request->phone;
-        $wisata -> background = $request->file('background')->store('public');
-        $wisata -> facility = $request->facility;
-        $wisata->save();
-        return redirect('/')->with('success', 'Berhasil Update Wisata!');
+        $kuliner = Kuliner::find($id);
+        $kuliner -> name = $request->name;
+        $kuliner -> description = $request->description;
+        $kuliner -> address = $request->address;
+        $kuliner -> time = $request->time;
+        $kuliner -> phone = $request->phone;
+        $kuliner -> background = $request->file('background')->store('public');
+        $kuliner -> facility = $request->facility;
+        $kuliner->save();
+        return redirect('/')->with('success', 'Berhasil Update kuliner!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Wisata  $wisata
+     * @param  \App\Models\kuliner  $kuliner
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $wisata= Wisata::find($id);
-        $wisata->delete();
+        $kuliner= Kuliner::find($id);
+        $kuliner->delete();
         return redirect('/')->with('success', 'Data berhasil dihapus!');
     }
 }

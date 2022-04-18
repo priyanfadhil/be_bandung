@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GalleryKerajinan extends Model
+class Kuliner extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_kerajinan', 'image'
+        'name', 'description', 'address', 'time',
+        'phone', 'background', 'facility'
     ];
 }

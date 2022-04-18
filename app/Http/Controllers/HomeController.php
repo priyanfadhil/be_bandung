@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\GalleryWisata;
+use App\Models\Kuliner;
 use App\Models\Wisata;
 
 class HomeController extends Controller
@@ -15,7 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $wisata = Wisata::query()->orderBy('name', 'asc')->limit(5)->get();
+        $kuliner = Kuliner::query()->orderBy('name', 'asc')->limit(5)->get();
         $title = "Dashboard";
-        return view('home', compact('wisata', 'title'));
+        return view('home', compact('wisata', 'title', 'kuliner'));
     }
 }
