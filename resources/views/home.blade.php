@@ -235,7 +235,7 @@
 <section style="margin-top:0!important" class="footer">
     <div class="container">
         <div style="text-align: center;">
-            <img src="{{url('assets/images/logo/KetapangLogoOnly-White.png')}}" width="150px" alt="Logo">
+            <img src="{{url('assets/images/logo/BeBandungLogoOnly-White.png')}}" width="150px" alt="Logo">
             <font color="#f5f5f5" class="font-segoe text-center nopadding">&#8212; &nbsp; Copyright&copy;2022 - be Bandung - Jawa Barat</font>
         </div>
     </div>
