@@ -3,7 +3,7 @@
 @section('konten')
 <!-- Detail Hero -->
 @if($data->background)
-<section style="background-image: url(<?php echo str_replace("public/","",asset('storage/'.$data->background)); ?>" class="hero-detail">
+<section style="background-image: url(<?php echo (asset('storage/'.$data->background)); ?>" class="hero-detail">
 @else
 <section style="background-image: url(https://source.unsplash.com/300x300)" class="hero-detail">
 @endif
