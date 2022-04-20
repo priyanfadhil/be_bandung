@@ -3,7 +3,7 @@
 @section('konten')
 <!-- Detail Hero -->
 @if($data->background)
-<section style="background-image: url(<?php echo str_replace("public/","",asset('storage/'.$data->background)); ?>" class="hero-detail">
+<section style="background-image: url(<?php echo (asset('storage/'.$data->background)); ?>" class="hero-detail">
 @else
 <section style="background-image: url(https://source.unsplash.com/300x300)" class="hero-detail">
 @endif
@@ -58,6 +58,18 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-4">
+        <main class="form-registration">
+            <form action="/favorit" method="post">
+                @csrf
+                <input type="hidden" name="id" value="{{ $id }}">
+                <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" style="background-color:#f8ba10; border: none;">Tambah Favorit</button>
+            </form>
+        </main>
+    </div>
 </div>
 
 <div class="row">

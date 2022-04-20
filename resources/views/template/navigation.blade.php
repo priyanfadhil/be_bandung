@@ -39,7 +39,7 @@
                         <button style="background-color:#f8ba10; border: none; color: white; border-radius: 6px;">{{ auth()->user()->name }}</button>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/favorite"><i class="bi bi-heart"></i> Favorite</a></li>
+                        <li><a class="dropdown-item" href="/favorite" method="get"><i class="bi bi-heart"></i> Favorite</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

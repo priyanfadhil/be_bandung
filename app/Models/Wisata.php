@@ -12,4 +12,9 @@ class Wisata extends Model
         'name', 'description', 'address', 'time',
         'phone', 'background', 'facility'
     ];
+
+    public function UserWisata()
+    {
+        return $this->hasMany(UserWisata::class);
+    }
 }

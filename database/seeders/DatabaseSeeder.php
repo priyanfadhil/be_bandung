@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('wisatas')->insert([
-            'name' => 'D’Dieuland',
+            'name' => "DDieuland",
             'description' => 'Destinasi ini statusnya ramah keluarga, jadi tetap seru dikunjungi semua kalangan',
             'address' => 'Rancanumpang, Kec. Gedebage, Kota Bandung, Jawa Barat',
             'time' => '19.00 - 20.00',

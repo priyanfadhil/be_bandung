@@ -69,7 +69,7 @@ class WisataController extends Controller
         $title = "Detail Wisata";
         if($data){
             $gallery = GalleryWisata::where('id_wisata', $id)->get();
-            return view('wisata.detail', compact('data', 'gallery', 'title'));
+            return view('wisata.detail', compact('data', 'gallery', 'title', 'id'));
         }else{
             return abort('404');
         }

@@ -138,7 +138,7 @@
         <div class="item">
             <div class="item-image">
                 @if($data->background)
-                <img class="item-image " src="<?php echo str_replace("public/","",asset('storage/'.$data->background)); ?>" width="auto" alt="">
+                <img class="item-image " src="<?php echo (asset('storage/'.$data->background)); ?>">
                 @else
                 <img class="item-image " src="https://source.unsplash.com/300x300" width="auto" alt="">
                 @endif
