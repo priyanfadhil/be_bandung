@@ -1,5 +1,6 @@
 @extends('template.application')
 @section('body')
+
 <section class="landing wisata" id="kuliner">
     <div style="padding-top: 60px" class="container">
         <div style="text-align: center;">
@@ -7,10 +8,9 @@
         </div>
     </div>
 
-    <div class="owl-carousel owl-theme">
+    <div>
     @foreach ($UserWisata as $data)
         <div class="item">
-            @dd($data->user->name)
             <div class="item-image">
                 @if($data->wisata->background)
                 <img class="item-image " src="<?php echo (asset('storage/'.$data->wisata->name)); ?>" width="auto" alt="">

@@ -63,7 +63,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-4">
         <main class="form-registration">
-            <form action="/favorit" method="post">
+            <form action="/favorite" method="post">
                 @csrf
                 <input type="hidden" name="id" value="{{ $id }}">
                 <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" style="background-color:#f8ba10; border: none;">Tambah Favorit</button>

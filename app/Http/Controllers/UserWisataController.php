@@ -18,7 +18,6 @@ class UserWisataController extends Controller
     {
         // $UserWisata = Wisata::where("id", auth()->user()->id)->get();
         $UserWisata = UserWisata::with('User', 'Wisata')->latest()->get();
-
         $title = "Favorit";
         return view('favorit/index', compact('UserWisata', 'title'));
     }
@@ -41,7 +40,7 @@ class UserWisataController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData['user_id'] =auth()->user()->id;
+        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['wisata_id'] = $request->id;
         
         UserWisata::create($validatedData);
